@@ -1,6 +1,6 @@
 // Requires
 var eventListeners = require('./event-listeners');
-var tabs = require('./tabs.js');
+var tabs = require('./tabs');
 
 $(function() {
   // define tabs

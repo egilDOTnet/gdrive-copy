@@ -19,6 +19,7 @@ var gulpHogan = require("gulp-hogan");
 var hoganCompile = require("gulp-hogan-compile");
 var hogan = require("hogan.js");
 var gulpif = require("gulp-if");
+var rename = require('gulp-rename');
 
 var isProd = false; // true for production; controls minification of JS, CSS, HTML, and building of images with `build`
 
@@ -58,7 +59,14 @@ gulp.task("generate-test-site", ["css", "cutestrap", "js"], function() {
     .pipe(gulp.dest("dist"));
 });
 
-gulp.task("js", function() {
+gulp.task('webpack', function () {
+  return gulp.src('./src/svelte/compiled.js')
+    .pipe(insert.wrap("<script>", "</script>"))
+    .pipe(rename('svelte.html'))
+    .pipe(gulp.dest("dist"));
+})
+
+gulp.task("js", ['webpack'], function() {
   globby(["./src/js/*.js"]).then(function(entries) {
     var b = browserify({
       entries: entries,

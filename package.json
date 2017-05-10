@@ -4,11 +4,14 @@
   "description": "Web app to recursively copy Google Drive folder and contents",
   "main": "gulpfile.js",
   "dependencies": {
-    "ramda": "^0.23.0"
+    "gulp-rename": "^1.2.2",
+    "ramda": "^0.23.0",
+    "svelte": "^1.20.2"
   },
   "devDependencies": {
-    "sinon": "^2.1.0",
-    "prettier": "^1.2.2",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-latest": "^6.24.1",
     "browserify": "~13.0.0",
     "chai": "^3.5.0",
     "cutestrap": "^1.2.3",
@@ -28,17 +31,22 @@
     "hogan.js": "^3.0.2",
     "jshint": "^2.9.3",
     "mocha": "^2.5.3",
+    "prettier": "^1.2.2",
     "sass-colorscheme": "^0.4.0",
     "selenium-webdriver": "^2.53.3",
+    "sinon": "^2.1.0",
+    "svelte-loader": "^2.0.1",
     "svg2png": "3.1.0",
     "vinyl-buffer": "~1.0.0",
-    "vinyl-source-stream": "~1.1.0"
+    "vinyl-source-stream": "~1.1.0",
+    "webpack": "^2.5.1"
   },
   "scripts": {
     "watch": "gulp watch",
-    "build": "gulp build",
-    "test-site": "gulp generate-test-site",
-    "watch-test-site": "gulp watch-test-site",
+    "webpack": "webpack",
+    "build": "webpack && gulp build",
+    "test-site": "webpack && gulp generate-test-site",
+    "watch-test-site": "webpack && gulp watch-test-site",
     "test": "mocha",
     "prettier": "prettier --write --single-quote",
     "prettier:lib": "npm run prettier -- \"lib/*.js\" ",
