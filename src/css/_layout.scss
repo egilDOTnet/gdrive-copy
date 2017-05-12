@@ -104,3 +104,11 @@ a {
     font-size: $fs-smaller;
     line-height: $lh-smaller;
 }
+
+.tab {
+    display: none;
+
+    &.active {
+        display: block;
+    }
+}

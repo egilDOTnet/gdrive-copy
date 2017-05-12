@@ -5,7 +5,7 @@ const babelSettings = JSON.parse(readFileSync('.babelrc'));
 
 module.exports = {
   entry: {
-    'index': [ './src/svelte/start.js' ]
+    'index': [ './src/app.js' ]
   },
   resolve: {
     extensions: [ '.js', '.html' ]

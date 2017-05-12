@@ -1,0 +1,20 @@
+<Nav views={{views}} bind:active on:click='setActive (event.view.name)'/>
+<ViewChanger views={{views}} bind:active />
+
+<script>
+    import Nav from './Nav';
+    import ViewChanger from './ViewChanger';
+    
+    export default {
+        components: {
+            Nav,
+            ViewChanger
+        },
+        methods: {
+            setActive: function(viewName) {
+                console.log(viewName);
+                this.set({active: viewName})
+            }
+        }
+    }
+</script>

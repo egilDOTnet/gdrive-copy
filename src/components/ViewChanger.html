@@ -1,0 +1,5 @@
+<div>
+    {{#each views as view}}
+        <div id='{{view.id}}' class='tab {{active === view.id ? 'active' : ''}}'>{{view.title}}</div>
+    {{/each}}
+</div>
