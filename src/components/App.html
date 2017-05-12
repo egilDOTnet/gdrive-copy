@@ -1,4 +1,4 @@
-<Nav views={{views}} bind:active on:click='setActive (event.view.name)'/>
+<Nav views={{views}} bind:active on:click='setActive (event.view.id)'/>
 <ViewChanger views={{views}} bind:active />
 
 <script>
@@ -11,9 +11,8 @@
             ViewChanger
         },
         methods: {
-            setActive: function(viewName) {
-                console.log(viewName);
-                this.set({active: viewName})
+            setActive: function(viewId) {
+                this.set({active: viewId})
             }
         }
     }
