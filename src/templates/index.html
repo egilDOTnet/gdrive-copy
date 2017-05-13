@@ -2,8 +2,6 @@
 <?!= HtmlService.createHtmlOutputFromFile('cutestrap').getContent(); ?>
 <?!= HtmlService.createHtmlOutputFromFile('css').getContent(); ?>
 
-
-
 <html>
     <head>
 
@@ -26,7 +24,6 @@
         {{> partials/overlay }}
         <div class='relative-wrapper'>
             {{> header }}
-            {{> main }}
             <div class='footer-spacer'></div>
             {{> footer }} 
         </div>
@@ -40,3 +37,4 @@
 
 <!-- Use a templated HTML printing scriptlet to import JavaScript. -->
 <?!= HtmlService.createHtmlOutputFromFile('js').getContent(); ?>
+<?!= HtmlService.createHtmlOutputFromFile('svelte').getContent(); ?>

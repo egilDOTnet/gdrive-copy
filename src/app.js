@@ -1,7 +1,9 @@
 import App from './components/App';
-import Start from './components/Start';
-import FAQ from './components/FAQ';
 import About from './components/About';
+import Start from './components/Start';
+import Resume from './components/Resume';
+import Pause from './components/Pause';
+import FAQ from './components/FAQ';
 
 const app = new App({
   target: document.querySelector('#app'),
@@ -20,12 +22,12 @@ const app = new App({
       {
         id: 'resume',
         title: 'Resume',
-        component: FAQ
+        component: Resume
       },
       {
         id: 'pause',
         title: 'Pause',
-        component: About
+        component: Pause
       },
       {
         id: 'faq',
@@ -37,8 +39,10 @@ const app = new App({
     active: 'start'
   },
   components: {
-      Start,
-      About,
-      FAQ
+    About,
+    Start,
+    Resume,
+    Pause,
+    FAQ
   }
 });
