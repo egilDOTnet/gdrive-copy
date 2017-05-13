@@ -1,5 +1,19 @@
-<div>
+<div class="container" id="container">
     {{#each views as view}}
-        <div id='{{view.id}}' class='tab {{active === view.id ? 'active' : ''}}'>{{view.title}}</div>
+        <div id='{{view.id}}' class='tab {{active === view.id ? 'active' : ''}}'></div>
     {{/each}}
 </div>
+
+<script>
+    export default {
+        oncreate() {
+            // for some reason this._state seems to be the only
+            // way to access the props passed to this component
+            this._state.views.forEach(function(view) {
+                new view.component({
+                    target: document.getElementById(view.id)
+                })
+            });
+        }
+    };
+</script>

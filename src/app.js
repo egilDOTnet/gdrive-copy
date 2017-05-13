@@ -1,7 +1,7 @@
 import App from './components/App';
-import Start from './components/start';
-import FAQ from './components/faq';
-import About from './components/about';
+import Start from './components/Start';
+import FAQ from './components/FAQ';
+import About from './components/About';
 
 const app = new App({
   target: document.querySelector('#app'),
