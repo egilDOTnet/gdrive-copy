@@ -1,2 +1,36 @@
-<p>Are you sure you want to stop the instances of copy folder that you have running?</p>
-<button type="button" class="btn btn--small" id="pause-confirm-button">Yes, I want to stop all my current instances of Copy Folder</button><br><br>
+<p>{{message}}</p>
+<p>
+{{#if showButton}}
+    <button
+        type="button"
+        class="btn btn--small"
+        on:click='handleClick(event)'>
+        Yes, I want to stop all my current instances of Copy Folder</button>
+{{/if}}
+</p>
+
+
+<script>
+    export default {
+        data() {
+            return {
+                message: 'Are you sure you want to stop the instances of copy folder that you have running?',
+                showButton: true
+            }
+        },
+        methods: {
+            handleClick: function (event) {
+                // TODO: add success and failure handlers
+                try {
+                    google.script.run.setStopFlag();
+                } catch (err) {
+                    console.log(err);
+                }
+                this.set({
+                    message: 'You have stopped all folder copies. To restart them, please use the "Resume" feature.',
+                    showButton: false
+                 });
+            }
+        }
+    }
+</script>

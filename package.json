@@ -44,8 +44,8 @@
   "scripts": {
     "watch": "gulp watch",
     "webpack": "webpack",
-    "build": "webpack && gulp build",
-    "test-site": "webpack && gulp generate-test-site",
+    "build": "NODE_ENV=production webpack && gulp build",
+    "test-site": "NODE_ENV=development webpack && gulp generate-test-site",
     "watch-test-site": "webpack && gulp watch-test-site",
     "test": "mocha",
     "prettier": "prettier --write --single-quote",

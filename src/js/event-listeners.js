@@ -186,13 +186,6 @@ module.exports = {
         .withFailureHandler(showError)
         .deleteAllTriggers();
     });
-  },
-
-  addPauseButtonListener: function() {
-    $('#pause-confirm-button').click(function() {
-      google.script.run.setStopFlag();
-      DOM.showPauseStep2();
-    });
   }
 };
 

@@ -1,0 +1,56 @@
+<div class="change-account__box">
+    <span class="userEmail">
+        {{message}}
+        {{#if processing}}
+            <span class="rotate-contents"><i class="spinner"></i></span>
+        {{/if}}
+    </span>
+    <br />
+    {{#if env === 'production'}}
+        <a target="_blank"
+            href="https://accounts.google.com/AccountChooser?continue=https://script.google.com/macros/s/AKfycbxbGNGajrxv-HbX2sVY2OTu7yj9VvxlOMOeQblZFuq7rYm7uyo/exec">
+            Click here</a> to log in with a different account.
+    {{else}}
+        <a target="_blank"
+            href="https://accounts.google.com/AccountChooser?continue=https://script.google.com/macros/s/AKfycbzKJQO5CBf7WDmrYo8FGDb20YWfoIyUZZhsbF844SI/dev">
+            Click here</a> to log in with a different account.
+    {{/if}}
+</div>
+
+<script>
+    export default {
+        data() {
+            return {
+                // process.env.NODE_ENV is passed in via a webpack plugin
+                env: process.env.NODE_ENV,
+                message: 'Logged in as ',
+                processing: true
+            }
+        },
+        oncreate() {
+            // get user email and put it in the account box
+            const self = this;
+            try {
+                google.script.run
+                .withSuccessHandler(function(email) {
+                    self.set({
+                        message: `Logged in as ${email}.`,
+                        processing: false
+                    });
+                })
+                .withFailureHandler(function(err) {
+                    self.set({
+                        message: 'Error retrieving active account.',
+                        processing: false
+                    });
+                })
+                .getUserEmail();
+            } catch (err) {
+                self.set({
+                    message: 'Error retrieving active account',
+                    processing: false
+                });
+            }
+        }
+    }
+</script>

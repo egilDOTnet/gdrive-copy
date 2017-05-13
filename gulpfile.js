@@ -59,14 +59,14 @@ gulp.task("generate-test-site", ["css", "cutestrap", "js"], function() {
     .pipe(gulp.dest("dist"));
 });
 
-gulp.task('webpack', function () {
+gulp.task('js', function () {
   return gulp.src('./src/svelte/compiled.js')
     .pipe(insert.wrap("<script>", "</script>"))
-    .pipe(rename('svelte.html'))
+    .pipe(rename('js.html'))
     .pipe(gulp.dest("dist"));
 })
 
-gulp.task("js", ['webpack'], function() {
+gulp.task("js_old", ['webpack'], function() {
   globby(["./src/js/*.js"]).then(function(entries) {
     var b = browserify({
       entries: entries,
