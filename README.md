@@ -46,3 +46,5 @@ forced to use it with only one account
 4. Add integration for Google Drive so that this script could be added into the context menu for Google Drive folders and 
 accessed directly from Drive, rather than having to navigate to a separate app
 5. General codebase cleanup and refactoring
+
+[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
