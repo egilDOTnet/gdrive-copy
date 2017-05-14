@@ -2,33 +2,9 @@
 
 <!--Form-->
 <div id="formDiv" class="form-div">
-    <form id="folderForm" name="folderForm">
+    <form id="folderForm" name="folderForm" on:submit='handleSubmit(event)'>
 
-        <!--Select Folder-->
-        Folder to copy
-        <!--Elements to select folder-->
-        <div class="folderSelect">
-            <button type="button" id="selectFolderButton" class="btn btn--small selectFolderButton">Select Folder</button>
-            or
-            <label for="newFolder" class="textfield">
-                <input type="text" id="folderTextbox" name="newFolder">
-                <span class="textfield__label">Paste folder URL (Ctrl-V)</span>
-            </label>
-        </div>
-
-        <div class="getFolderErrors"></div>
-        
-        
-        <div class="folderLookup">
-            Finding folder...<span class="rotate-contents"><i class="spinner"></i></span>
-        </div>
-
-
-        <!--Display when folder is selected-->
-        <div class="selectedFolderInfo">
-            <span class="folderName"></span> &nbsp;&nbsp;
-            <button type="reset" class="btn  btn--small selectOtherFolder">Select other folder</button>
-        </div>
+        <SelectFolder selectText={{selectText}} />
         
         <br />
 
@@ -77,7 +53,7 @@
 
 
         <!--Submit-->
-        <button type="submit" id="copyFolderButton" data-loading-text="Copying..." class="btn">Copy folder</button>
+        <SubmitButton buttonText={{buttonText}} on:click='handleClick(event)' />
 
     </form>
 
@@ -85,9 +61,27 @@
 
 <script>
     import Question from './icons/Question';
+    import SelectFolder from './SelectFolder';
+    import SubmitButton from './SubmitButton';
     export default {
+        data() {
+            return {
+                buttonText: 'Copy Folder',
+                selectText: 'Folder to copy'
+            }
+        },
         components: {
-            Question
+            Question,
+            SelectFolder,
+            SubmitButton
+        },
+        methods: {
+            handleClick(e) {
+
+            },
+            handleSubmit(e) {
+
+            }
         }
     }
 </script>
