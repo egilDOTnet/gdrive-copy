@@ -3,25 +3,16 @@
 var gulp = require("gulp");
 var htmlmin = require("gulp-htmlmin");
 var concat = require("gulp-concat");
-var uglify = require("gulp-uglify");
-var jshint = require("gulp-jshint");
 var sass = require("gulp-sass");
 var insert = require("gulp-insert");
 var autoprefixer = require("gulp-autoprefixer");
-var browserify = require("browserify");
-var changed = require("gulp-changed");
-var source = require("vinyl-source-stream");
-var buffer = require("vinyl-buffer");
-var globby = require("globby");
 var svg2png = require("svg2png");
 var fs = require("fs");
 var gulpHogan = require("gulp-hogan");
-var hoganCompile = require("gulp-hogan-compile");
-var hogan = require("hogan.js");
-var gulpif = require("gulp-if");
 var rename = require('gulp-rename');
 
-var isProd = false; // true for production; controls minification of JS, CSS, HTML, and building of images with `build`
+// controls minification of JS, CSS, HTML, and building of images with `build`
+var isProd = process.env.NODE_ENV === 'production'; 
 
 gulp.task("default", function() {
   // Default task
@@ -29,7 +20,7 @@ gulp.task("default", function() {
 
 gulp.task(
   "build",
-  ["jslint", "js", "gs", "css", "cutestrap", "html"],
+  ["js", "gs", "css", "cutestrap", "html"],
   function() {
     if (isProd) {
       buildImages();
@@ -66,54 +57,11 @@ gulp.task('js', function () {
     .pipe(gulp.dest("dist"));
 })
 
-gulp.task("js_old", ['webpack'], function() {
-  globby(["./src/js/*.js"]).then(function(entries) {
-    var b = browserify({
-      entries: entries,
-      baseDir: "./src/js",
-      debug: false
-    });
-
-    return b
-      .bundle()
-      .pipe(source("js.html"))
-      .pipe(buffer())
-      .pipe(
-        gulpif(
-          isProd,
-          uglify(),
-          uglify({
-            mangle: false,
-            output: {
-              indent_start: 0, // start indentation on every line (only when `beautify`)
-              indent_level: 2,
-              beautify: true, // beautify output?
-              bracketize: true, // use brackets every time?
-              comments: false // output comments?
-            },
-            compressor: {
-              sequences: false, // join consecutive statemets with the “comma operator”
-              conditionals: false, // optimize if-s and conditional expressions
-              comparisons: false, // optimize comparisons
-              evaluate: false, // evaluate constant expressions
-              booleans: true, // optimize boolean expressions
-              loops: false, // optimize loops
-              join_vars: false // join var declarations
-            }
-          })
-        )
-      ) // GAS doesn't like the huge files that it creates without uglifying
-      .pipe(insert.wrap("<script>", "</script>"))
-      .pipe(gulp.dest("dist"));
-  });
-});
 
 gulp.task("gs", function() {
-  // just lint for now
-  return gulp
-    .src("./lib/**/*.js")
-    .pipe(jshint())
-    .pipe(jshint.reporter("default"));
+  // linting has been moved to prettier.
+  // anything needed here?
+  return;
 });
 
 gulp.task("css", function() {
@@ -139,7 +87,6 @@ gulp.task("cutestrap", function() {
 gulp.task("html", function() {
   return gulp
     .src("src/templates/index.html")
-    .pipe(changed("dist"))
     .pipe(gulpHogan({ isProd: isProd }))
     .pipe(concat("Index.html"))
     .pipe(
@@ -155,13 +102,6 @@ gulp.task("html", function() {
 });
 
 gulp.task("img", buildImages);
-
-gulp.task("jslint", function() {
-  return gulp
-    .src("./src/js/*.js")
-    .pipe(jshint())
-    .pipe(jshint.reporter("default"));
-});
 
 function buildImages() {
   let img_path = "./dist/icons/";
