@@ -1,6 +1,6 @@
 'use strict';
 var assert = require('chai').assert;
-var parseId = require('../src/js/parseId');
+var parseId = require('../src/util/parseId');
 
 describe('parseId.js', function() {
   it('should return the input string if it does not contain the search terms', function() {
