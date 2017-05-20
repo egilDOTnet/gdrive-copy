@@ -1,14 +1,12 @@
 "use strict";
 
 var gulp = require("gulp");
-var htmlmin = require("gulp-htmlmin");
 var concat = require("gulp-concat");
 var sass = require("gulp-sass");
 var insert = require("gulp-insert");
 var autoprefixer = require("gulp-autoprefixer");
 var svg2png = require("svg2png");
 var fs = require("fs");
-var gulpHogan = require("gulp-hogan");
 var rename = require('gulp-rename');
 
 // controls minification of JS, CSS, HTML, and building of images with `build`
@@ -43,11 +41,7 @@ gulp.task("watch-test-site", function() {
 });
 
 gulp.task("generate-test-site", ["css", "cutestrap", "js"], function() {
-  return gulp
-    .src("src/templates/test.html")
-    .pipe(gulpHogan())
-    .pipe(concat("test.html"))
-    .pipe(gulp.dest("dist"));
+  return;
 });
 
 gulp.task('js', function () {
@@ -81,23 +75,6 @@ gulp.task("cutestrap", function() {
     .pipe(autoprefixer({ browsers: ["last 2 versions"] }))
     .pipe(concat("cutestrap.html"))
     .pipe(insert.wrap("<style>", "</style>"))
-    .pipe(gulp.dest("dist"));
-});
-
-gulp.task("html", function() {
-  return gulp
-    .src("src/templates/index.html")
-    .pipe(gulpHogan({ isProd: isProd }))
-    .pipe(concat("Index.html"))
-    .pipe(
-      htmlmin({
-        collapseWhitespace: true,
-        removeComments: true,
-        removeCommentsFromCDATA: true,
-        conservativeCollapse: true,
-        minifyJS: true
-      })
-    )
     .pipe(gulp.dest("dist"));
 });
 
