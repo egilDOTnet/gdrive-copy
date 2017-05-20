@@ -1,11 +1,10 @@
 <!-- Main difference between this an index is that the scripts and styles are inlined
 so that they can be viewed locally without dealing with the GAS HTMLService-->
-
+<!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="../dist/css.html">
         <link rel="stylesheet" href="../dist/cutestrap.html">
-        <link src="../dist/js.html"></script>
+        <link rel="stylesheet" href="../dist/css.html">
     </head>
 
     <body>
@@ -55,10 +54,12 @@ so that they can be viewed locally without dealing with the GAS HTMLService-->
 
                 </section>
             </header>
-            
-            <div class='footer-spacer'></div>
-            
+
+            <!--svelte component mount here-->
+            <div id="app"></div>
+
             <!--Footer: links to related project and github-->
+            <div class='footer-spacer'></div>
             <footer class="grid">
 
                 <!--Spacer-->
@@ -84,7 +85,7 @@ so that they can be viewed locally without dealing with the GAS HTMLService-->
 
             </footer>
         </div>
-        <script src="../dist/js.html"></script>
+        <script src="../dist/svelte.js"></script>
         <script async defer src="https://buttons.github.io/buttons.js"></script>
     </body>
 </html>

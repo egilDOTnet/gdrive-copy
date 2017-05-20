@@ -45,9 +45,14 @@ gulp.task("generate-test-site", ["css", "cutestrap", "js"], function() {
 });
 
 gulp.task('js', function () {
+  if (isProd) {
+    return gulp.src('./src/svelte/compiled.js')
+      .pipe(insert.wrap("<script>", "</script>"))
+      .pipe(rename('js.html'))
+      .pipe(gulp.dest("dist"));
+  }
   return gulp.src('./src/svelte/compiled.js')
-    .pipe(insert.wrap("<script>", "</script>"))
-    .pipe(rename('js.html'))
+    .pipe(rename('svelte.js'))
     .pipe(gulp.dest("dist"));
 })
 
