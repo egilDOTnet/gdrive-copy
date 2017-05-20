@@ -7,10 +7,9 @@
 <script>
     export default {
         oncreate() {
-            // render each view component.
-            // for some reason this._state seems to be the only
-            // way to access the props passed to this component
-            this._state.views.forEach(function(view) {
+            // this.get will retrieve the prop "views" that is passed into the component
+            const views = this.get('views');
+            views.forEach(function(view) {
                 new view.component({
                     target: document.getElementById(view.id)
                 })
