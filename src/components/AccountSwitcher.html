@@ -2,7 +2,7 @@
     <span class="userEmail">
         {{message}}
         {{#if processing}}
-            <span class="rotate-contents"><i class="spinner"></i></span>
+            <Spinner />
         {{/if}}
     </span>
     <br />
@@ -18,6 +18,8 @@
 </div>
 
 <script>
+    import Spinner from './icons/Spinner';
+
     export default {
         data() {
             return {
@@ -51,6 +53,9 @@
                     processing: false
                 });
             }
+        },
+        components: {
+            Spinner,
         }
     }
 </script>

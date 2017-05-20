@@ -17,9 +17,9 @@ module.exports = {
   },
   plugins: [
     // this gives the compiled codebase access to process.env.NODE_ENV
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
-    }),
+    new webpack.EnvironmentPlugin([
+      "NODE_ENV"
+    ])
   ],
   module: {
     rules: [
