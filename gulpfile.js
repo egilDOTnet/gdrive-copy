@@ -18,7 +18,7 @@ gulp.task("default", function() {
 
 gulp.task(
   "build",
-  ["js", "gs", "css", "cutestrap", "html"],
+  ["js", "gs", "css", "cutestrap"],
   function() {
     if (isProd) {
       buildImages();
