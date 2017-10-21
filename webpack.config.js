@@ -6,15 +6,13 @@ const wrapPlugin = require('./webpackWrapPlugin.js');
 
 let plugins = [
   // this gives the compiled codebase access to process.env.NODE_ENV
-  new webpack.EnvironmentPlugin([
-    "NODE_ENV"
-  ]),
+  new webpack.EnvironmentPlugin(['NODE_ENV']),
   // new wrapPlugin({top: '<script>', bottom: '</script>', raw: true}),
   // new webpack.BannerPlugin({banner: 'this is a test banner', raw: true})
   new webpack.optimize.UglifyJsPlugin({
     sourceMap: false,
     comments: false
-  })]
+  })
 ];
 
 // if (ENV === 'production') {
@@ -26,10 +24,10 @@ let plugins = [
 
 module.exports = {
   entry: {
-    'index': [ './src/app.js' ]
+    index: ['./src/app.js']
   },
   resolve: {
-    extensions: [ '.js', '.html' ]
+    extensions: ['.js', '.html']
   },
   output: {
     path: __dirname + '/src/svelte',

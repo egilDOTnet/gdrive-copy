@@ -47,11 +47,16 @@ var item = {
   kind: 'drive#file',
   id: '1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw',
   etag: '"H5Hv_ZhVlK228vwAeoDGtniOiaU/MTQ2OTgzMjA4NTI5NQ"',
-  selfLink: 'https://www.googleapis.com/drive/v2/files/1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw',
-  alternateLink: 'https://docs.google.com/document/d/1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw/edit?usp=drivesdk',
-  embedLink: 'https://docs.google.com/document/d/1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw/preview',
-  iconLink: 'https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document',
-  thumbnailLink: 'https://docs.google.com/feeds/vt?gd=true&id=1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw&v=2&s=AMedNnoAAAAAWOAZ8P_LQcv0bjk6B3l7EVaSUjI8ko3s&sz=s220',
+  selfLink:
+    'https://www.googleapis.com/drive/v2/files/1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw',
+  alternateLink:
+    'https://docs.google.com/document/d/1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw/edit?usp=drivesdk',
+  embedLink:
+    'https://docs.google.com/document/d/1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw/preview',
+  iconLink:
+    'https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.document',
+  thumbnailLink:
+    'https://docs.google.com/feeds/vt?gd=true&id=1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw&v=2&s=AMedNnoAAAAAWOAZ8P_LQcv0bjk6B3l7EVaSUjI8ko3s&sz=s220',
   title: 'Geology Trivia',
   mimeType: 'application/vnd.google-apps.document',
   labels: {
@@ -71,26 +76,37 @@ var item = {
     {
       kind: 'drive#parentReference',
       id: '0AClyXjPTESTPARENTID9PVA',
-      selfLink: 'https://www.googleapis.com/drive/v2/files/1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw/parents/0AClyXjPTESTPARENTID9PVA',
-      parentLink: 'https://www.googleapis.com/drive/v2/files/0AClyXjPTESTPARENTID9PVA',
+      selfLink:
+        'https://www.googleapis.com/drive/v2/files/1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw/parents/0AClyXjPTESTPARENTID9PVA',
+      parentLink:
+        'https://www.googleapis.com/drive/v2/files/0AClyXjPTESTPARENTID9PVA',
       isRoot: true
     }
   ],
   exportLinks: {
-    'application/rtf': 'https://docs.google.com/feeds/download/documents/export/Export?id=1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw&exportFormat=rtf',
-    'application/vnd.oasis.opendocument.text': 'https://docs.google.com/feeds/download/documents/export/Export?id=1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw&exportFormat=odt',
-    'text/html': 'https://docs.google.com/feeds/download/documents/export/Export?id=1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw&exportFormat=html',
-    'application/pdf': 'https://docs.google.com/feeds/download/documents/export/Export?id=1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw&exportFormat=pdf',
-    'application/epub+zip': 'https://docs.google.com/feeds/download/documents/export/Export?id=1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw&exportFormat=epub',
-    'application/zip': 'https://docs.google.com/feeds/download/documents/export/Export?id=1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw&exportFormat=zip',
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.document': 'https://docs.google.com/feeds/download/documents/export/Export?id=1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw&exportFormat=docx',
-    'text/plain': 'https://docs.google.com/feeds/download/documents/export/Export?id=1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw&exportFormat=txt'
+    'application/rtf':
+      'https://docs.google.com/feeds/download/documents/export/Export?id=1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw&exportFormat=rtf',
+    'application/vnd.oasis.opendocument.text':
+      'https://docs.google.com/feeds/download/documents/export/Export?id=1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw&exportFormat=odt',
+    'text/html':
+      'https://docs.google.com/feeds/download/documents/export/Export?id=1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw&exportFormat=html',
+    'application/pdf':
+      'https://docs.google.com/feeds/download/documents/export/Export?id=1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw&exportFormat=pdf',
+    'application/epub+zip':
+      'https://docs.google.com/feeds/download/documents/export/Export?id=1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw&exportFormat=epub',
+    'application/zip':
+      'https://docs.google.com/feeds/download/documents/export/Export?id=1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw&exportFormat=zip',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+      'https://docs.google.com/feeds/download/documents/export/Export?id=1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw&exportFormat=docx',
+    'text/plain':
+      'https://docs.google.com/feeds/download/documents/export/Export?id=1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw&exportFormat=txt'
   },
   userPermission: {
     kind: 'drive#permission',
     etag: '"H5Hv_ZhVlK228vwAeoDGtniOiaU/rsqH_mtEIhPHQDl_yZ4zaa1S-zc"',
     id: 'me',
-    selfLink: 'https://www.googleapis.com/drive/v2/files/1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw/permissions/me',
+    selfLink:
+      'https://www.googleapis.com/drive/v2/files/1K0aLuzyWvYt1SxYpTHISISATESTV9Y4fBYw/permissions/me',
     role: 'owner',
     type: 'user'
   },
@@ -101,7 +117,8 @@ var item = {
       kind: 'drive#user',
       displayName: 'Eric Dauenhauer',
       picture: {
-        url: 'https://lh6.googleusercontent.com/-t2CzMrU_66E/AAAAAAAAAAI/AAAAAAAAADg/nbum6einNP8/s64/photo.jpg'
+        url:
+          'https://lh6.googleusercontent.com/-t2CzMrU_66E/AAAAAAAAAAI/AAAAAAAAADg/nbum6einNP8/s64/photo.jpg'
       },
       isAuthenticatedUser: true,
       permissionId: '09563987345987156811',
@@ -113,7 +130,8 @@ var item = {
     kind: 'drive#user',
     displayName: 'Eric Dauenhauer',
     picture: {
-      url: 'https://lh6.googleusercontent.com/-t2CzMrU_66E/AAAAAAAAAAI/AAAAAAAAADg/nbum6einNP8/s64/photo.jpg'
+      url:
+        'https://lh6.googleusercontent.com/-t2CzMrU_66E/AAAAAAAAAAI/AAAAAAAAADg/nbum6einNP8/s64/photo.jpg'
     },
     isAuthenticatedUser: true,
     permissionId: '09563987345987156811',

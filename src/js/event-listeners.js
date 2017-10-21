@@ -135,7 +135,9 @@ module.exports = {
       // Get values from form and selected folder to initialize copy
       picker.folder.destName = $('#newFolder').val();
       picker.folder.permissions =
-        $('#permissions-group').find('input:checked').val() == 'yes';
+        $('#permissions-group')
+          .find('input:checked')
+          .val() == 'yes';
       picker.folder.destLocation = $('#destination-group')
         .find('input:checked')
         .val();

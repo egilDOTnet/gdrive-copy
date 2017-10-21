@@ -5,6 +5,7 @@
   "main": "gulpfile.js",
   "dependencies": {
     "gulp-rename": "^1.2.2",
+    "prettier": "^1.7.4",
     "ramda": "^0.23.0",
     "svelte": "^1.20.2"
   },
@@ -18,9 +19,8 @@
     "gulp-autoprefixer": "~3.1.0",
     "gulp-concat": "~2.6.0",
     "gulp-insert": "~0.5.0",
-    "gulp-sass": "^2.1.1",
+    "gulp-sass": "^3.1.0",
     "mocha": "^2.5.3",
-    "prettier": "^1.2.2",
     "sass-colorscheme": "^0.4.0",
     "sinon": "^2.1.0",
     "svelte-loader": "^2.0.1",
@@ -35,10 +35,7 @@
     "watch-test-site": "webpack && gulp watch-test-site",
     "test": "mocha",
     "prettier": "prettier --write --single-quote",
-    "prettier:lib": "npm run prettier -- \"lib/*.js\" ",
-    "prettier:src": "npm run prettier -- \"src/**/*.js\" ",
-    "prettier:test": "npm run prettier -- \"test/**/*.js\" ",
-    "prettier:all": "npm run prettier:lib && npm run prettier:src && npm run prettier:test"
+    "prettier:all": "npm run prettier -- \"{,!(node_modules),!(public),!(dist)/**/}*.{js,css,scss}\""
   },
   "repository": {
     "type": "git",
