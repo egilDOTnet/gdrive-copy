@@ -2,7 +2,7 @@ const readFileSync = require('fs').readFileSync;
 const babelSettings = JSON.parse(readFileSync('.babelrc'));
 const ENV = process.env.NODE_ENV || 'development';
 const webpack = require('webpack');
-const wrapPlugin = require('./webpackWrapPlugin.js');
+// const wrapPlugin = require('./webpackWrapPlugin.js');
 
 let plugins = [
   // this gives the compiled codebase access to process.env.NODE_ENV
@@ -10,6 +10,8 @@ let plugins = [
   // new wrapPlugin({top: '<script>', bottom: '</script>', raw: true}),
   // new webpack.BannerPlugin({banner: 'this is a test banner', raw: true})
   new webpack.optimize.UglifyJsPlugin({
+    beautify: true,
+    mangle: false,
     sourceMap: false,
     comments: false
   })

@@ -2,8 +2,7 @@
 {{selectText}}
 <!--Elements to select folder-->
 <div class="folderSelect">
-    <button type="button" id="selectFolderButton" class="btn btn--small selectFolderButton">Select Folder</button>
-    or
+    <button type="button" id="selectFolderButton" class="btn btn--small selectFolderButton">Select Folder</button> or
     <label for="newFolder" class="textfield">
         <input type="text" id="folderTextbox" name="newFolder">
         <span class="textfield__label" on:mouseup='handleMouse(event)' on:keyup='handleKey(event)'>Paste folder URL (Ctrl-V)</span>
@@ -13,9 +12,10 @@
 <div class="getFolderErrors"></div>
 
 {{#if findingFolder}}
-    <div class="folderLookup">
-        Finding folder...<Spinner />
-    </div>
+<div class="folderLookup">
+    Finding folder...
+    <Spinner />
+</div>
 {{/if}}
 
 
@@ -26,87 +26,89 @@
 </div>
 
 <script>
-/**
- * Provides functionality used for the "Select Folder"
- * textboxes, which automatically find folder metadata when a URL 
- * is pasted into them.  The textboxes can handle pasting via 'Ctrl+V',
- * or right-clicking and selecting "Paste" from the context menu. 
- */
+    /**
+     * Provides functionality used for the "Select Folder"
+     * textboxes, which automatically find folder metadata when a URL 
+     * is pasted into them.  The textboxes can handle pasting via 'Ctrl+V',
+     * or right-clicking and selecting "Paste" from the context menu. 
+     */
 
-// Requires
-const picker = require('../util/picker');
-const parseId = require('../util/parseId');
-import Spinner from './icons/Spinner';
+    // Requires
+    const picker = require('../util/picker');
+    const parseId = require('../util/parseId');
+    import Spinner from './icons/Spinner';
 
 
-/**
- * If folder URL is added, get folder metadata and display relevant information.
- * 
- * @param {object} e event object
- */
-const getFileData = function(e) {
-    if (e.target.value !== '') {
-        // DOM.onFolderLookup();
-        clearInterval(interval);
+    /**
+     * If folder URL is added, get folder metadata and display relevant information.
+     * 
+     * @param {object} e event object
+     */
+    const getFileData = function (e) {
+        if (e.target.value !== '') {
+            // DOM.onFolderLookup();
+            clearInterval(interval);
 
-        var id = parseId(e.target.value);
+            var id = parseId(e.target.value);
 
-        google.script.run
-        .withSuccessHandler(function(metadata) {
-        // save metadata to picker.folder
-        picker.setSelectedFolder({
-            srcId: metadata.id,
-            srcParentId: metadata.parents[0].id,
-            srcName: metadata.title,
-            destName: 'Copy of ' + metadata.title
-        });
-        })
-        .withFailureHandler(function(msg) {
-        $('.folderSelect').hide();
-        $('.folderLookup').hide();
-        $('.selectedFolderInfo').show();
-        $('.getFolderErrors')
-            .text(
-            'Error: ' +
-                msg +
-                '<br>You may not have permission to copy this folder.'
-            )
-            .show();
-        })
-        .getMetadata(id);
-    }
-    return false;
-}
-
-export default {
-    // interval is the handle for the interval set in handleMouse and cleared in getFileData
-    data () {
-        return {
-            interval: {}
+            google.script.run
+                .withSuccessHandler(function (metadata) {
+                    // save metadata to picker.folder
+                    picker.setSelectedFolder({
+                        srcId: metadata.id,
+                        srcParentId: metadata.parents[0].id,
+                        srcName: metadata.title,
+                        destName: 'Copy of ' + metadata.title
+                    });
+                })
+                .withFailureHandler(function (msg) {
+                    $('.folderSelect').hide();
+                    $('.folderLookup').hide();
+                    $('.selectedFolderInfo').show();
+                    $('.getFolderErrors')
+                        .text(
+                            'Error: ' +
+                            msg +
+                            '<br>You may not have permission to copy this folder.'
+                        )
+                        .show();
+                })
+                .getMetadata(id);
         }
-    },
-    methods: {
-        /**
-         * If right-click, setTimeout
-         * If left-click, trigger immediately
-         */
-        handleMouse(e) {
-            // if context menu is activated, give user time to paste data via context menu
-            if (e.button === 2) {
-                var g = function() {
-                    return getFileData(e);
-                };
-                set({interval: setInterval(g, 500)});
-                return;
+        return false;
+    }
+
+    export default {
+        // interval is the handle for the interval set in handleMouse and cleared in getFileData
+        data() {
+            return {
+                interval: {}
             }
-            getFileData(e);
         },
-        handleKey(e) {
-            getFileData(e);
+        methods: {
+            /**
+             * If right-click, setTimeout
+             * If left-click, trigger immediately
+             */
+            handleMouse(e) {
+                // if context menu is activated, give user time to paste data via context menu
+                if (e.button === 2) {
+                    var g = function () {
+                        return getFileData(e);
+                    };
+                    set({
+                        interval: setInterval(g, 500)
+                    });
+                    return;
+                }
+                getFileData(e);
+            },
+            handleKey(e) {
+                getFileData(e);
+            }
+        },
+        components: {
+            Spinner,
         }
-    },
-    components: {
-        Spinner,
     }
-}
 </script>
