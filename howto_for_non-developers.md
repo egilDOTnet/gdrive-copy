@@ -13,6 +13,7 @@ code is required to launch a web app using the code in this repository.
 ## Requirements
 
 * Git
+* Python2
 * NodeJS 4.x
 * NPM (packaged with NodeJS)
 * Google Drive account
